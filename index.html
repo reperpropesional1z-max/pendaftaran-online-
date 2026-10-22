@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #007bff, #6610f2);
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #007bff;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 7px;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .login {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .login a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        #pesan {
+            margin-top: 15px;
+            text-align: center;
+            color: #16803c;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Registration</h2>
+        <p class="subtitle">Buat akun baru kamu</p>
+
+        <form id="registerForm">
+            <div class="input-group">
+                <label for="nama">Nama Lengkap</label>
+                <input type="text" id="nama"
+                       placeholder="Masukkan nama"
+                       required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email"
+                       placeholder="Masukkan email"
+                       required>
+            </div>
+
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username"
+                       placeholder="Buat username"
+                       required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password"
+                       placeholder="Minimal 8 karakter"
+                       minlength="8"
+                       required>
+            </div>
+
+            <div class="input-group">
+                <label for="konfirmasi">Konfirmasi Password</label>
+                <input type="password" id="konfirmasi"
+                       placeholder="Ulangi password"
+                       minlength="8"
+                       required>
+            </div>
+
+            <button type="submit">Daftar Sekarang</button>
+            <p id="pesan"></p>
+        </form>
+
+        <p class="login">
+            Sudah punya akun?
+            <a href="login.html">Login</a>
+        </p>
+    </div>
+
+    <script>
+        const form = document.getElementById("registerForm");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const password =
+                document.getElementById("password").value;
+            const konfirmasi =
+                document.getElementById("konfirmasi").value;
+            const pesan = document.getElementById("pesan");
+
+            if (password !== konfirmasi) {
+                pesan.style.color = "red";
+                pesan.textContent =
+                    "Password dan konfirmasi tidak sama!";
+                return;
+            }
+
+            pesan.style.color = "green";
+            pesan.textContent =
+                "Formulir berhasil divalidasi!";
+
+            // Form ini belum menyimpan akun ke server.
+        });
+    </script>
+
+</body>
+</html>
